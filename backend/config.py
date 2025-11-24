@@ -5,6 +5,11 @@ Charge les variables d'environnement et fournit les paramètres de configuration
 
 from pydantic_settings import BaseSettings
 from typing import Optional
+from dotenv import load_dotenv
+import os
+
+# Charger explicitement le fichier .env
+load_dotenv()
 
 
 class Settings(BaseSettings):
@@ -32,6 +37,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = False
+        extra = "ignore"  # Ignorer les champs supplémentaires
 
 
 # Instance globale des paramètres
